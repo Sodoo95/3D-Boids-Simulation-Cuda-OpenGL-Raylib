@@ -93,9 +93,9 @@ Here is GIF (Too large so it might take time to load the gif),
 
 ### Stage 4 → 5: LOD system
 
-**EN:** 3 fish mesh variants (480 / 144 / 50 faces) selected per boid by distance to camera. Instead of drawing 480-face fish everywhere, distant boids use the 50-face version.
+**EN:** 3 fish mesh variants (144 / 42 / 21 faces) selected per boid by distance to camera. Instead of drawing 480-face fish everywhere, distant boids use the 50-face version.
 
-**JP:** 魚メッシュを 3 種類 (480 / 144 / 50 面) 用意。カメラからの距離で選ぶ。遠い魚は 50 面の軽い版。
+**JP:** 魚メッシュを 3 種類 (144 / 42 / 21 面) 用意。カメラからの距離で選ぶ。遠い魚は 50 面の軽い版。
 
 ---
 
