@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Boids sim 3D/Boids sim 3D.vcxproj" Id="8dbfab7a-fc62-4d27-a225-cffa677f8927" />
+</Solution>
