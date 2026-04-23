@@ -65,8 +65,6 @@ Here is GIF (Too large so it might take time to load the gif),
 
 **JP:** 群れの計算 (分離・整列・結合 + 障害物回避) を CPU から CUDA カーネルへ移動。空間グリッドで近くの 27 セルだけ確認。
 
-**ふりがな:** ぐん けいさん (ぶんり・せいれつ・けつごう しょうがいぶつかいひ) ... いどう。くうかん ... ちか ... かくにん。
-
 ---
 
 ### Stage 1 → 2: CUB radix sort
@@ -74,8 +72,6 @@ Here is GIF (Too large so it might take time to load the gif),
 **EN:** `thrust::sort_by_key` was allocating and freeing GPU memory every frame — a hidden performance killer. Replaced with `cub::DeviceRadixSort` using a persistent temp buffer allocated once.
 
 **JP:** `thrust::sort_by_key` は毎フレーム内部で `cudaMalloc` / `cudaFree` していた。`cub::DeviceRadixSort` に置き換え、バッファを一度だけ確保して再利用。
-
-**ふりがな:** まい ... ないぶ ... お か ... いちど ... かくほ ... さいりよう。
 
 ---
 
@@ -85,8 +81,6 @@ Here is GIF (Too large so it might take time to load the gif),
 
 **JP:** `cudaMemcpy` (GPU → CPU) がボトルネックだった。`cudaMallocHost` で固定メモリを使うと転送が 2〜3 倍速くなる。
 
-**ふりがな:** こてい ... つか ... てんそう ... ばいそく。
-
 ---
 
 ### Stage 3 → 4: Async double buffering
@@ -94,8 +88,6 @@ Here is GIF (Too large so it might take time to load the gif),
 **EN:** Compute frame N+1 while drawing frame N. Used `cudaMemcpyAsync` with two buffer sets on a dedicated CUDA stream so CPU matrix building overlaps with GPU transfer.
 
 **JP:** フレーム N+1 の計算とフレーム N の描画を並行させる。`cudaMemcpyAsync` とバッファ 2 つで、CPU の行列計算と GPU 転送が重なるようにした。
-
-**ふりがな:** けいさん ... びょうが ... へいこう ... ぎょうれつけいさん ... てんそう ... かさ。
 
 ---
 
@@ -105,8 +97,6 @@ Here is GIF (Too large so it might take time to load the gif),
 
 **JP:** 魚メッシュを 3 種類 (480 / 144 / 50 面) 用意。カメラからの距離で選ぶ。遠い魚は 50 面の軽い版。
 
-**ふりがな:** さかな ... しゅるい ... めん ... ようい ... きょり ... えら。とお さかな ... めん ... かる ばん。
-
 ---
 
 ### Stage 5 → 6: CUDA–OpenGL interop
@@ -114,8 +104,6 @@ Here is GIF (Too large so it might take time to load the gif),
 **EN:** CUDA writes transform matrices **directly into GL vertex buffers** — zero CPU roundtrip. `cudaGraphicsGLRegisterBuffer` lets one VRAM buffer be shared between CUDA and OpenGL.
 
 **JP:** CUDA が変換行列を直接 GL バッファに書き込む。CPU 経由がゼロに。`cudaGraphicsGLRegisterBuffer` で同じ VRAM バッファを CUDA と OpenGL で共有。
-
-**ふりがな:** へんかんぎょうれつ ... ちょくせつ ... か こ ... けいゆ ... おな ... きょうゆう。
 
 ---
 
@@ -125,8 +113,6 @@ Here is GIF (Too large so it might take time to load the gif),
 
 **JP:** Debug ビルドは nvcc の `-G` フラグで最適化がオフ、CUDA が 5〜10 倍遅くなる。また Release の .exe を Windows 設定で NVIDIA に割り当てし直す必要あり (AMD 内蔵に戻っていた)。
 
-**ふりがな:** さいてきか ... ばいおそ ... せってい ... わ あ なお ひつよう ... ないぞう ... もど。
-
 ---
 
 ### Stage 7 → 8: Parameter tuning
@@ -134,8 +120,6 @@ Here is GIF (Too large so it might take time to load the gif),
 **EN:** Adjusted world size, grid cell size, and perception radius. Lower boid density per cell = fewer neighbor checks per frame. Visual behavior preserved.
 
 **JP:** ワールドサイズ、セルサイズ、視野半径を調整。セルあたりのボイドが減って近隣チェックが減る。見た目の挙動は維持。
-
-**ふりがな:** しやはんけい ... ちょうせい ... へ ... きんりん ... へ。み め ... きょどう ... いじ。
 
 ---
 
@@ -152,11 +136,6 @@ Here is GIF (Too large so it might take time to load the gif),
 - CUDA が NVIDIA で動き、画面は AMD 内蔵 GPU という状態を発見。GPU 間コピーが見えない遅延の原因。
 - プロファイルの `cudaFree` バーから Thrust の内部確保を発見。
 
-**ふりがな:**
-- ... すいそく ... けいそく ... とくてい。
-- ... うご、がめん ... ないぞう ... じょうたい ... はっけん。... かん ... み ... ちえん ... げんいん。
-- ... ないぶかくほ ... はっけん。
-
 ---
 
 ## Summary / まとめ
@@ -164,5 +143,3 @@ Here is GIF (Too large so it might take time to load the gif),
 **EN:** From **5,000 boids (CPU)** to **260,000 boids (GPU)** at 60fps on an RTX 2060 — a **52×** increase. Each step was driven by measurement, not guesswork.
 
 **JP:** **5,000 匹 (CPU)** から **260,000 匹 (GPU)** へ、RTX 2060 で 60fps 維持。**52 倍** の向上。各ステップは推測ではなく計測に基づいて判断。
-
-**ふりがな:** ひき ... ひき ... いじ。ばい ... こうじょう。かく ... すいそく ... けいそく ... もと ... はんだん。
