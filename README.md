@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <img src="Boids%20sim%203D/BOID3D.gif" alt="3D Boids Simulation demo" width="820"><br>
+  <img src="demo.gif" alt="3D Boids Simulation demo" width="820"><br>
   <sub>Live capture — the clip is large, so it may take a moment to load.</sub>
 </p>
 
